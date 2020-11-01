@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_books, through: :favorites, source: :book
 
+  has_many :book_comments
+
   validates :name, presence: true, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum: 50}
 end

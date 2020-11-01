@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @book = Book.new
-    @favorite_books = @user.favorite_books
   end
 
   def edit
