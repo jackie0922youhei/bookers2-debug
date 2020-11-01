@@ -8,6 +8,7 @@ class User < ApplicationRecord
   attachment :profile_image, destroy: false
 
   has_many :favorites
+  has_many :favorite_books, through: :favorites, source: :book
 
   validates :name, presence: true, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum: 50}

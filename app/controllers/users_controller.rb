@@ -6,11 +6,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @favorite_books = @user.favorite_books
   end
 
   def index
     @users = User.all
     @book = Book.new
+    @favorite_books = @user.favorite_books
   end
 
   def edit
