@@ -20,3 +20,13 @@
     </nav>
   </div>
 </header>
+<div class="container">
+    <% if user_signed_in? %>
+      <%= form_with url:'/search', method: :get, local: true do |f| %>
+        <%= f.text_field :word %>
+        <%= f.select :range, {'User': 1, 'Book': 2}, { class: 'form-control' , required: true } %>
+        <%= f.select :search, {'完全一致': 'perfect_match', '前方一致': 'forward_match', '後方一致': 'backward_match', '部分一致': 'partial_match'}, { class: 'form-control' , required: true } %>
+        <%= f.submit '検索' %>
+      <% end %>
+    <% end %>
+</div>
