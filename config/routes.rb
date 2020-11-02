@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   resources :books do
     resource :favorites, only: [:create, :destroy]
-    resources :book_comments, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy] # :book_id :id　＝＞　/books/:book_id/book_comments/:id
   end
 
 
