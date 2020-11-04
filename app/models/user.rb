@@ -4,13 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :books
+  has_many :books, dependent: :destroy
   attachment :profile_image, destroy: false
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_books, through: :favorites, source: :book
 
-  has_many :book_comments
+  has_many :book_comments, dependent: :destroy
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower

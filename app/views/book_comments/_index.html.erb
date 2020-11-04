@@ -1,0 +1,29 @@
+				<% comments.each do |comment| %>
+					<li class="comment" style="margin-bottom: 30px;">
+						<div class="comment-body bb">
+							<div class="comment-avatar">
+								<div class="avatar">
+									<%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+								</div>
+							</div>
+							<div class="comment-text">
+								<div class="comment-author clearfix">
+									<%= comment.user.name %>
+									<span class="comment-meta">
+										<span class="comment-date">
+											<%= comment.created_at.strftime('%Y/%m/%d') %>
+										</span>
+									</span>
+								</div>
+								<div class="comment-entry">
+									<%= comment.body %>
+								</div>
+								<span class="delete-button">
+									<% if comment.user == current_user %>
+										<%= link_to "削除", book_book_comment_path(book.id, comment.id), method: :delete, remote: true, class: "btn btn-danger pull-right" %>
+									<% end %>
+								</span>
+							</div>
+						</div>
+					</li>
+				<% end %>
