@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   
   get 'search' => 'searches#search'
 
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+  }
+  
   resources :users, only: [:show,:index,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
