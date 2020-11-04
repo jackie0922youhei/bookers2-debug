@@ -4,7 +4,9 @@ class BookCommentsController < ApplicationController
     @book_comment = current_user.book_comments.build(book_comment_params)
     @book_comment.book_id = @book.id
     if @book_comment.save
+      @comments = @book.book_comments.order(created_at: :desc)
       render :index
+      # @book_comments = @book.book_comments.order(created_at: :desc)
       # redirect_back(fallback_location: root_path)
     else
       @newbook = Book.new
