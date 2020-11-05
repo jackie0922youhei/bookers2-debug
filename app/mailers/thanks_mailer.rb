@@ -1,9 +1,8 @@
 class ThanksMailer < ApplicationMailer
   
-  def send_when_signup(user, thanks)
+  def send_when_signup(user)
     @user = user
-    @thanks = thanks.signup
-    mail to: user.email, subject: '【Bookers】 Thank you for your signing up!'
+    mail to: @user.email, subject: '【Bookers】 Thank you for your signing up!'
   end
   
 end

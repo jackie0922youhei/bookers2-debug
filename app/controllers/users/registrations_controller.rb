@@ -1,18 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  
-  before_action :set_user
-  
-  def create
-    if @user.save #ユーザーのインスタンスが新しく生成されて保存されたら
-      NotificationMailer.send_when_signup(@user).deliver #確認メールを送信
-      redirect_to @user
-    else
-      render 'new'
-    end
-  end
-  
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -22,9 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    ThanksMailer.send_when_signup(current_user).deliver
+  end
 
   # GET /resource/edit
   # def edit
@@ -71,4 +61,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
 end
