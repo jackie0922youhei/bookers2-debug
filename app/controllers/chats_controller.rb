@@ -15,7 +15,7 @@ class ChatsController < ApplicationController
   def show
     UserRoom.where(user_id: current_user.id, room_id: @room.id).present?
     @chats = @room.chats.includes(:user).order("created_at asc")
-    @chat = Chat.new
+    @chat_ = Chat.new
     @entries = @room.user_rooms
   end
   

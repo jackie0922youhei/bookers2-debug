@@ -1,0 +1,5 @@
+<%= form_with model: chat do |f| %>
+  <%= f.label :message, 'チャット内容' %>
+  <br>
+  <%= f.text_field :message, autofocus: true, class: "message" %>
+<% end %>

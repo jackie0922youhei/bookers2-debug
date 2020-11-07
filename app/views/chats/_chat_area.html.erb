@@ -1,0 +1,12 @@
+<div class="chats">
+  <div class="chat_scroll">
+    <% if chats.present? %>
+      <% chats.each do |ch| %>
+        <div id: "message_#{ch.id}" >
+          <%= ch.message %>
+          <br>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
