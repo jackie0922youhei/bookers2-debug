@@ -1,1 +1,2 @@
 $('#comment-<%= @book_comment.id %>').remove();
+$("#comments_count").html("<%= j(render 'count', { book: @book_comment.book }) %>")

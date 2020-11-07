@@ -17,6 +17,10 @@ class User < ApplicationRecord
 
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
+  
+  has_many :chats
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
 
   validates :name, presence: true, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum: 50}

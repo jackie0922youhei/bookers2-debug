@@ -9,10 +9,10 @@ class BookCommentsController < ApplicationController
       # @book_comments = @book.book_comments.order(created_at: :desc)
       # redirect_back(fallback_location: root_path)
     else
-      @newbook = Book.new
-      @user = current_user
+      # @newbook = Book.new
+      # @user = current_user
       # @book_comment = BookComment.new
-      render "books/show"
+      render "error"
     end
   end
 

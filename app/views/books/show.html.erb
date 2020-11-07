@@ -38,9 +38,8 @@
 							</div>
 						</td>
 					<% end %>
-					<td>
-						<span>コメント数:　</span>
-						<%= @book.book_comments.count %>
+					<td id="comments_count">
+						<%= render 'book_comments/count', book: @book %>
 					</td>
 				</tr>
 			</table>
@@ -51,21 +50,12 @@
 				<%= render 'book_comments/index', comments: @book_comments, book: @book %>
 			</ol>
 			<hr>
-			<% if @book_comment.errors.any? %>
-				<div id="error_explanation">
-					<h3><%= @book_comment.errors.count %>error prohibited this obj from being saved:</h3>
-						<ul>
-							<% @book_comment.errors.full_messages.each do |message| %>
-								<li><%= message %></li>
-							<% end %>
-						</ul>
-				</div>
-			<% end %>
-
+			<div id="comments_error">
+				<%= render 'layouts/errors', model: @book_comment %>
+			</div>
 			<div class="comment-create">
 				<%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
 			</div>
 
 	</div>
 </div>
-
