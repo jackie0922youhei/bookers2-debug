@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <% unless user.id == current_user.id %>
     <% if haveRoom == true %>
-      <%= link_to "chatを始める", chat_path(chat.id) %>
+      <%= link_to "chatを始める", chats_path %>
     <% else %>
       <%= form_with model: room, local: true do |f| %>
         <%= fields_for entry do |e| %>
