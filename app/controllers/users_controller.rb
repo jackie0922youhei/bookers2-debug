@@ -24,7 +24,7 @@ class UsersController < ApplicationController
           @entry = UserRoom.new
         end
       end
-    
+    end
   end
 
   def index
