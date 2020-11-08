@@ -53,5 +53,11 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
+  
+  enum is_valid: { '有効': true, '退会済': false }
+  
+  def active_for_authentication?
+    super && self.is_valid == '有効'
+  end
 
 end
