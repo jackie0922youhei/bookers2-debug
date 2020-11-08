@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'chats/create'
-  get 'chats/show'
-  get 'rooms/create'
   root to: 'homes#top'
 
   get 'home/about' => 'homes#about', as: 'about'
 
   get 'search' => 'searches#search'
+  
+  post '/homes/guest_sign_in', to: 'homes#new_guest'
 
   devise_for :users, :controllers => {
     :sessions => 'users/sessions',

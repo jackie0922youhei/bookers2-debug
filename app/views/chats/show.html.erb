@@ -1,8 +1,24 @@
-<h2>~~~さんとのチャット</h2>
-<div id="chat_area">
-  <%= render 'chats/chat_area', chats: @chats %>
+<!--<h2>~~~さんとのチャット</h2>-->
+<!--<div id="chat_area">-->
+<!--  render 'chats/chat_area', chats: @chats %>-->
+<!--</div>-->
+
+<!--<div class="chat_form">-->
+<!--   render 'chats/chat_form', chat: @chat_new %>-->
+<!--</div>-->
+<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
+
+<div class="message">
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+      <p style="text-align: right;"><%= chat.message %></p>
+    <% else %>
+      <p style="text-align: left;"><%= chat.message %></p>
+    <% end %>
+  <% end %>
 </div>
 
-<div class="chat_form">
-  <%= render 'chats/chat_form', chat: @chat_new %>
-</div>
+<%= form_with model: @chat do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+<% end %>
