@@ -21,6 +21,9 @@ class User < ApplicationRecord
   has_many :chats
   has_many :user_rooms
   has_many :rooms, through: :user_rooms
+  
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   validates :name, presence: true, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum: 50}
