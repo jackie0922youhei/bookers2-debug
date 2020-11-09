@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about', as: 'about'
 
   get 'search' => 'searches#search'
-  
+
   post '/homes/guest_sign_in', to: 'homes#new_guest'
 
   devise_for :users, :controllers => {
@@ -28,5 +28,7 @@ Rails.application.routes.draw do
   resources :rooms, only: [:create]
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create]
+
+  resources :notifications, only: :index
 
 end
